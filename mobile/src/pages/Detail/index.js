@@ -9,15 +9,17 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import * as MailComposer from "expo-mail-composer";
 
 export default function Detail() {
+
   const navigation = useNavigation();
+
+  const route = useRoute();
+  const incident = route.params.incident;
+  
   const message =
     `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.name}" com o valor de ${Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-      }).format(incident.value)}`;
-  const route = useRoute();
-
-  const incident = route.params.incident;
+      }).format(incident.value)}`;  
 
   function navigateToIncidents() {
     navigation.navigate("Incidents");
